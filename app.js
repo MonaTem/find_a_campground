@@ -3,6 +3,10 @@ var app = express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var Campground = require("./models/campgrounds");
+var seedDB = require("./seeds");
+
+//Call the seedDB function
+seedDB();
 
 mongoose.connect("mongodb://localhost/yelpcamp");
 
@@ -10,21 +14,8 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 
 
-
-// Campground.create({
-//     name: "Campground One",
-//     image: "http://www.truckcampermagazine.com/wp-content/uploads/stories/Yellowstone-National-Park/Yellowstone-buffalo-11.jpg",
-//     description: "This is the first campground."
-// }, function(err, newlyCreated) {
-//     if(err) {
-//         console.log(err);
-//     } else {
-//         console.log("Campground added..");
-//         console.log(newlyCreated);
-//     }
-// });
-
-
+//ROUTES
+//========================================================================================
 app.get("/", function(req, res) {
     res.render("landing");
 });
