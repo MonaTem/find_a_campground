@@ -3,6 +3,7 @@ var app = express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var Campground = require("./models/campgrounds");
+var Comment = require("./models/comments");
 var seedDB = require("./seeds");
 
 //Call the seedDB function
@@ -59,10 +60,11 @@ app.get("/campgrounds/new", function(req, res) {
 
 app.get("/campgrounds/:id", function(req, res) {
     //Find the campground with the provided ID
-    Campground.findById(req.params.id, function(err, foundCampground) {
+    Campground.findById(req.params.id).populate("comments").exec(function(err, foundCampground) {
         if(err) {
             console.log(err);
         } else {
+            console.log(foundCampground);
             //Render the show template with the info from that campground
             res.render("show", {campground: foundCampground});
         }
