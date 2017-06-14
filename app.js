@@ -2,12 +2,28 @@ var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
+var passport = require("passport");
+var LocalStrategy = require("passport-local");
 var Campground = require("./models/campgrounds");
 var Comment = require("./models/comments");
+var User = require("./models/user");
 var seedDB = require("./seeds");
 
 //Call the seedDB function
 seedDB();
+
+//Passport Config
+app.use(require("express-session")({
+    secret: "Nixon is a cat",
+    resave: false,
+    saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 mongoose.connect("mongodb://localhost/yelpcamp");
 
