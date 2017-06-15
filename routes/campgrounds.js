@@ -18,7 +18,7 @@ router.get("/", function(req, res) {
 
 //CREATE route - add a new campground to the db
 
-router.post("/", function(req, res) {
+router.post("/", isLoggedIn, function(req, res) {
     var name = req.body.name;
     var image = req.body.image;
     var description = req.body.description;
@@ -35,7 +35,7 @@ router.post("/", function(req, res) {
 
 //NEW route - shows the form to add a new campground
 
-router.get("/new", function(req, res) {
+router.get("/new", isLoggedIn, function(req, res) {
     res.render("campgrounds/new");
 });
 
