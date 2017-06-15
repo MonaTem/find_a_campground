@@ -30,6 +30,12 @@ mongoose.connect("mongodb://localhost/yelpcamp");
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
+app.use(function(req, res, next) {
+    //res.locals will make it available to every template:
+    res.locals.currentUser = req.user;
+    //Move onto the next middleware:
+    next();
+});
 
 
 //ROUTES
@@ -45,7 +51,7 @@ app.get("/campgrounds", function(req, res) {
         if(err) {
             console.log(err);
         } else {
-            res.render("campgrounds/index", {campgrounds:allCampgrounds});
+            res.render("campgrounds/index", {campgrounds:allCampgrounds, currentUser: req.user});
         }
     });
 });
