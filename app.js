@@ -1,6 +1,7 @@
 var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
+var methodOverride = require("method-override");
 var mongoose = require("mongoose");
 var passport = require("passport");
 var LocalStrategy = require("passport-local");
@@ -35,6 +36,7 @@ mongoose.connect("mongodb://localhost/yelpcamp");
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride("_method"));
 app.use(express.static(__dirname + "/public"));
 app.use(function(req, res, next) {
     //res.locals will make it available to every template:
