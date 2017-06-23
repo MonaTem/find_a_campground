@@ -35,6 +35,7 @@ middlewareObj.checkCommentOwnership = function(req, res, next) {
                 if(foundComment.author.id.equals(req.user._id)) {    //.equals is a mongoose method - have to use this b/c req.user._id is a string but foundCampground.author.id is a js object.
                     next();
                 } else {
+
                     res.redirect("back");
                 }
             }
@@ -49,6 +50,7 @@ middlewareObj.isLoggedIn = function(req, res, next) {
      if(req.isAuthenticated()) {
         return next();
     }
+    req.flash("error", "Please login first!");    //This needs to be before the redirect code. It will show when the login page is rendered, not before it's rendered.
     res.redirect("/login");
 };
 

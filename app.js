@@ -3,6 +3,7 @@ var app = express();
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
 var mongoose = require("mongoose");
+var flash = require("connect-flash");   //Will be used to add flash messages - needs to be before passport config.
 var passport = require("passport");
 var LocalStrategy = require("passport-local");
 var Campground = require("./models/campgrounds");
@@ -37,6 +38,7 @@ mongoose.connect("mongodb://localhost/yelpcamp");
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
+app.use(flash());    //Tell app to use flash
 app.use(express.static(__dirname + "/public"));
 app.use(function(req, res, next) {
     //res.locals will make it available to every template:
