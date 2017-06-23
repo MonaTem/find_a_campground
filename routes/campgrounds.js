@@ -74,9 +74,10 @@ router.put("/:id", middleware.checkCampgroundOwnership, function(req, res) {
     Campground.findByIdAndUpdate(req.params.id, req.body.campground, function(err, updatedCampground) {
         if(err) {
             console.log(err);
+            req.flash("error", "Sorry, something went wrong..");
             res.redirect("/campgrounds");
         } else {
-            console.log(updatedCampground);
+            req.flash("success", "Campground updated!");
             res.redirect("/campgrounds/" + req.params.id);
         }
     });
@@ -87,9 +88,10 @@ router.delete("/:id", middleware.checkCampgroundOwnership, function(req, res) {
     Campground.findByIdAndRemove(req.params.id, function(err) {
         if(err) {
             console.log(err);
+            req.flash("error", "Sorry, something went wrong...");
             res.redirect("/campgrounds");
         } else {
-            console.log("Campground deleted..");
+            req.flash("success", "Campground deleted!");
             res.redirect("/campgrounds");
         }
     });

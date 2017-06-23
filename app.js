@@ -43,6 +43,9 @@ app.use(express.static(__dirname + "/public"));
 app.use(function(req, res, next) {
     //res.locals will make it available to every template:
     res.locals.currentUser = req.user;
+    //make message available to every template
+    res.locals.error = req.flash("error");
+    res.locals.success = req.flash("success");
     //Move onto the next middleware:
     next();
 });
