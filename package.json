@@ -4,13 +4,14 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/flyingfoxweb/find_a_campground.git"
   },
-  "author": "",
+  "author": "Erin Brunken",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/flyingfoxweb/find_a_campground/issues"
