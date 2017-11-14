@@ -33,7 +33,9 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-mongoose.connect("mongodb://localhost/yelpcamp");
+// mongoose.connect("mongodb://localhost/yelpcamp");
+mongoose.connect("mongodb://flyingfox:frauke2015@ds159235.mlab.com:59235/flyingfox_yelp_camp")
+
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
