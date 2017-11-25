@@ -1,3 +1,12 @@
+h1,
+h2 {
+    font-family: 'Yellowtail', cursive;
+}
+
+#header-area {
+    padding-bottom: 2em;
+}
+
 .thumbnail img {
     width: 100%;
 }
