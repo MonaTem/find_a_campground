@@ -24,3 +24,7 @@ h2 {
 .delete-form{
     display: inline;
 }
+
+.login-section {
+    margin: 2em;
+}
