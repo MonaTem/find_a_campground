@@ -7,6 +7,12 @@ h2 {
     padding-bottom: 2em;
 }
 
+
+.jumbotron {
+    background-color: #fff;
+    text-align: center;
+}
+
 #center-links {
     /*border: 1px solid red;*/
     padding-top: 1%;
