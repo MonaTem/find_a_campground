@@ -7,6 +7,11 @@ h2 {
     padding-bottom: 2em;
 }
 
+#center-links {
+    /*border: 1px solid red;*/
+    padding-top: 1%;
+}
+
 .thumbnail img {
     width: 100%;
 }
